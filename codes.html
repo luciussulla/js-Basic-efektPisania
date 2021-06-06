@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style> 
+        *{
+            font-size: 20px; 
+        } 
+        .msg { 
+            width: 300px; 
+            height: 150px;
+        }
+        span.line {
+            height: 10px; 
+            width: 1px; 
+            border-right: 1px solid transparent; 
+        }
+        span.line.show {
+           border-right: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div><span class="msg"></span> <span class="line"></span></div>
+    <button class="btn">Click</button>
+    <script>
+        console.log("start")
+        const txt = "lorem lorem lorem sdj lsdjskdj skdj sjd  lsdkjsdkjs djfiefj jfjfiejfir"
+        const msg = document.querySelector('.msg')
+        const blinking = document.querySelector('span.line')
+        let i = 0
+        function showIt(){
+            console.log(i)
+            msg.textContent += txt[i]
+            i++
+            if(i>=txt.length) {
+                msg.innerHTML = ''
+                i=0
+            } 
+            setTimeout(showIt, 100)
+        }
+        showIt()
+        setInterval(function(){
+            console.log('...blinking')
+            blinking.classList.toggle('show')
+        }, 400)
+    </script>
+</body>
+</html>
